@@ -20,7 +20,7 @@ class ExampleUnitTest {
         assertEquals(4, 2 + 2)
     }
 
-    lateinit var url:String
+    private lateinit var url:String
     @Before
     fun initializeRetrofit(){
         url = "todos/1"
