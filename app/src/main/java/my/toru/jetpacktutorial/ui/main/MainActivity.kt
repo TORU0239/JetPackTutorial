@@ -1,8 +1,8 @@
-package my.toru.jetpacktutorial
+package my.toru.jetpacktutorial.ui.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import my.toru.jetpacktutorial.ui.main.MainFragment
+import my.toru.jetpacktutorial.R
 
 class MainActivity : AppCompatActivity() {
 

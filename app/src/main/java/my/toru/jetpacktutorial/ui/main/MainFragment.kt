@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.work.*
 import my.toru.jetpacktutorial.R
+import my.toru.jetpacktutorial.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
 

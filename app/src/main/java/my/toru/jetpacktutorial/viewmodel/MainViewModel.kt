@@ -1,4 +1,4 @@
-package my.toru.jetpacktutorial.ui.main
+package my.toru.jetpacktutorial.viewmodel
 
 import android.arch.lifecycle.ViewModel
 
