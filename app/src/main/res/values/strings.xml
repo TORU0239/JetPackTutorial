@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JetPackTutorial</string>
+    <string name="loading_data">Loading Data!</string>
 </resources>

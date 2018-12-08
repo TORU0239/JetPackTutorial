@@ -9,20 +9,19 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 import retrofit2.http.Url
-import java.util.concurrent.TimeUnit
 
 interface JetPackNetworkApi {
     @GET
-    fun getData(@QueryMap query:HashMap<String, String>): Call<PostData>
+    fun getData(@QueryMap query:HashMap<String, String>): Call<ArrayList<PostData>>
 
     @GET
-    fun getFakeData(@Url url:String): Call<PostData>
+    fun getFakeData(@Url url:String): Call<ArrayList<PostData>>
 
     companion object {
         private const val URL = "https://jsonplaceholder.typicode.com/"
         val api:JetPackNetworkApi = Retrofit.Builder()
                 .baseUrl(URL)
-                .client(OkHttp3Initializer.okHttp3())
+                .client(OkHttp3Initializer.okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(JetPackNetworkApi::class.java)
@@ -30,15 +29,15 @@ interface JetPackNetworkApi {
 }
 
 object OkHttp3Initializer{
+     val okHttpClient:OkHttpClient
+
+    init {
+        okHttpClient = OkHttpClient().newBuilder()
+                .addNetworkInterceptor(initInterceptor())
+                .build()
+    }
+
     private fun initInterceptor():HttpLoggingInterceptor
             = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
-
-    fun okHttp3():OkHttpClient = OkHttpClient.Builder()
-            .addNetworkInterceptor(initInterceptor())
-            .readTimeout(3000, TimeUnit.MICROSECONDS)
-            .writeTimeout(3000, TimeUnit.MICROSECONDS)
-            .build()
 }
-
-

@@ -1,5 +1,6 @@
 package my.toru.jetpacktutorial
 
+import my.toru.jetpacktutorial.model.data.PostData
 import my.toru.jetpacktutorial.model.remote.JetPackNetworkApi
 import org.junit.Test
 
@@ -28,16 +29,16 @@ class ExampleUnitTest {
 
     @Test
     fun testRetrofit(){
-        JetPackNetworkApi.api.getFakeData(url).enqueue(object: Callback<String>{
-            override fun onResponse(call: Call<String>, response: Response<String>) {
+        JetPackNetworkApi.api.getFakeData(url).enqueue(object: Callback<ArrayList<PostData>>{
+            override fun onResponse(call: Call<ArrayList<PostData>>, response: Response<ArrayList<PostData>>) {
                 assertEquals(true, response.isSuccessful)
                 assertEquals(true, response.code() == 200)
-                assertEquals(true, response.body()?.length?.let {
-                  it >= 0
+                assertEquals(true, response.body()?.size?.let {
+                    it >= 0
                 })
             }
 
-            override fun onFailure(call: Call<String>, t: Throwable) {
+            override fun onFailure(call: Call<ArrayList<PostData>>, t: Throwable) {
                 t.printStackTrace()
             }
         })
