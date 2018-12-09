@@ -23,7 +23,7 @@ class MainViewModel(private val fragmentProvider: FragmentProvider) : ViewModel(
     init {
         callAPI()
         test.observe(fragmentProvider.fragment, Observer<String>{
-
+            it?.let { str -> fragmentProvider.showToast(str) }
         })
     }
 
@@ -33,8 +33,8 @@ class MainViewModel(private val fragmentProvider: FragmentProvider) : ViewModel(
             adapter.list = it
             adapter.notifyDataSetChanged()
             progressObservable.set(false)
-            fragmentProvider.showToast("Finished!")
-//            test.value = "Finished"
+//            fragmentProvider.showToast("Finished!")
+            test.value = "Finished"
         }
 
         val noDataCb:()->Unit = {
