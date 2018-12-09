@@ -13,6 +13,7 @@ import my.toru.jetpacktutorial.R
 import my.toru.jetpacktutorial.databinding.MainFragmentBinding
 import my.toru.jetpacktutorial.viewmodel.FragmentProvider
 import my.toru.jetpacktutorial.viewmodel.MainViewModel
+import my.toru.jetpacktutorial.viewmodel.MainViewModelProviderFactory
 
 class MainFragment : Fragment() {
     companion object {
@@ -30,8 +31,7 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.fragmentProvider = FragmentProvider(this@MainFragment)
+        viewModel = ViewModelProviders.of(this, MainViewModelProviderFactory(FragmentProvider(this@MainFragment))).get(MainViewModel::class.java)
         dataBinding.mainViewModel = viewModel
     }
 
