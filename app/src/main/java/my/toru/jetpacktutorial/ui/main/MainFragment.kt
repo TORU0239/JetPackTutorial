@@ -1,6 +1,7 @@
 package my.toru.jetpacktutorial.ui.main
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import my.toru.jetpacktutorial.R
 import my.toru.jetpacktutorial.databinding.MainFragmentBinding
+import my.toru.jetpacktutorial.viewmodel.ContextProvider
 import my.toru.jetpacktutorial.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
@@ -28,6 +30,7 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel.ctxProvider = ContextProvider(activity as Context)
         databinding.mainViewModel = viewModel
     }
 }

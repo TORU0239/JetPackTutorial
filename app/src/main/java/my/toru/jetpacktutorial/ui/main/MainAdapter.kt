@@ -23,7 +23,7 @@ class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
     }
 }
 
-class MainViewHolder(val binding: MainAdapterBinding):RecyclerView.ViewHolder(binding.root){
+class MainViewHolder(private val binding: MainAdapterBinding):RecyclerView.ViewHolder(binding.root){
     fun bindingItem(data:PostData){
         binding.postData = data
         binding.executePendingBindings()

@@ -11,12 +11,12 @@ import my.toru.jetpacktutorial.ui.main.MainAdapter
 
 class MainViewModel : ViewModel() {
     val progressObservable: ObservableField<Boolean> = ObservableField(true)
+    val adapter:MainAdapter = MainAdapter()
+    lateinit var ctxProvider: ContextProvider
 
     init {
         callAPI()
     }
-
-    val adapter:MainAdapter = MainAdapter()
 
     private fun callAPI(){
         val scb:(ArrayList<PostData>)->Unit = {
@@ -24,6 +24,7 @@ class MainViewModel : ViewModel() {
             adapter.list = it
             adapter.notifyDataSetChanged()
             progressObservable.set(false)
+            ctxProvider.showToast("Finished!")
         }
 
         val noDataCb:()->Unit = {
