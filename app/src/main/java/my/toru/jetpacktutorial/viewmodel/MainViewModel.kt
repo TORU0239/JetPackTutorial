@@ -11,8 +11,11 @@ import my.toru.jetpacktutorial.ui.main.MainAdapter
 
 class MainViewModel : ViewModel() {
     val progressObservable: ObservableField<Boolean> = ObservableField(true)
-    val adapter:MainAdapter = MainAdapter()
-    lateinit var ctxProvider: ContextProvider
+    val adapter:MainAdapter = MainAdapter{
+        fragmentProvider.showToast("Clicked!!")
+        fragmentProvider.moveToDetail()
+    }
+    lateinit var fragmentProvider: FragmentProvider
 
     init {
         callAPI()
@@ -24,7 +27,7 @@ class MainViewModel : ViewModel() {
             adapter.list = it
             adapter.notifyDataSetChanged()
             progressObservable.set(false)
-            ctxProvider.showToast("Finished!")
+            fragmentProvider.showToast("Finished!")
         }
 
         val noDataCb:()->Unit = {
@@ -41,7 +44,7 @@ class MainViewModel : ViewModel() {
                 .enqueue(RetrofitCallback<ArrayList<PostData>>(scb, noDataCb, serverFailure))
     }
 
-    fun testBtnClick(v: View){
+    fun loadingAgainBtn(v: View){
         Log.w(TAG, "testBtnClick!")
         progressObservable.set(true)
         callAPI()
