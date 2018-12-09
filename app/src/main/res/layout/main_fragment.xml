@@ -25,7 +25,8 @@
             android:id="@+id/main_rcv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:mainAdapter="@{mainViewModel.adapter}"/>
 
         <ProgressBar
             android:layout_width="wrap_content"
