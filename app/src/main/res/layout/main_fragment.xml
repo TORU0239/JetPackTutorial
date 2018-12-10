@@ -14,7 +14,7 @@
         tools:context=".ui.main.MainFragment">
 
         <Button
-            android:id="@+id/main_test_btn"
+            android:id="@+id/main_reload_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/loading_data"
@@ -24,9 +24,12 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/main_rcv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            app:mainAdapter="@{mainViewModel.adapter}"/>
+            app:mainAdapter="@{mainViewModel.adapter}"
+            tools:listitem="@layout/main_adapter"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/main_reload_btn"/>
 
         <ProgressBar
             android:layout_width="wrap_content"
