@@ -12,11 +12,11 @@ class RetrofitCallback<T>(private val successCB:(T)->Unit,
             response.body()?.let(successCB)
         }
         else{
-            noResponseCB
+            noResponseCB()
         }
     }
     override fun onFailure(call: Call<T>, t: Throwable) {
         t.printStackTrace()
-        serverFailure
+        serverFailure()
     }
 }

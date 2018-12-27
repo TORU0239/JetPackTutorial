@@ -18,11 +18,11 @@ class MainViewModel(private val fragmentProvider: FragmentProvider) : ViewModel(
         fragmentProvider.moveToDetail()
     }
 
-    private val test:MutableLiveData<String> = MutableLiveData()
+    private val resultTextData:MutableLiveData<String> = MutableLiveData()
 
     init {
         callAPI()
-        test.observe(fragmentProvider.fragment, Observer<String>{
+        resultTextData.observe(fragmentProvider.fragment, Observer<String>{
             it?.let { str -> fragmentProvider.showToast(str) }
         })
     }
@@ -31,10 +31,8 @@ class MainViewModel(private val fragmentProvider: FragmentProvider) : ViewModel(
         val scb:(ArrayList<PostData>)->Unit = {
             Log.i(TAG, "size:: ${it.size}")
             adapter.list = it
-            adapter.notifyDataSetChanged()
             progressObservable.set(false)
-//            fragmentProvider.showToast("Finished!")
-            test.value = "Finished"
+            resultTextData.value = "Finished"
         }
 
         val noDataCb:()->Unit = {
