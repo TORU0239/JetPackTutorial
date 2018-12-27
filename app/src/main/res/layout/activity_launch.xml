@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    tools:context=".ui.launch.LaunchActivity">
+
+    <Button
+        android:id="@+id/btn_databinding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DataBinding"/>
+
+    <Button
+        android:id="@+id/btn_room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Room"/>
+
+    <Button
+        android:id="@+id/btn_paging"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paging Library"/>
+
+    <Button
+        android:id="@+id/btn_workmanager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WorkManager"/>
+
+</LinearLayout>
