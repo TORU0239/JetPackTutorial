@@ -11,9 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import my.toru.jetpacktutorial.R
 import my.toru.jetpacktutorial.databinding.MainFragmentBinding
-import my.toru.jetpacktutorial.viewmodel.FragmentProvider
-import my.toru.jetpacktutorial.viewmodel.MainViewModel
-import my.toru.jetpacktutorial.viewmodel.MainViewModelProviderFactory
+import my.toru.jetpacktutorial.viewmodel.common.FragmentProvider
+import my.toru.jetpacktutorial.viewmodel.main.MainViewModel
+import my.toru.jetpacktutorial.viewmodel.main.MainViewModelProviderFactory
 
 class MainFragment : Fragment() {
     companion object {

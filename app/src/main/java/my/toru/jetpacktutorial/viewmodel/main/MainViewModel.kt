@@ -1,4 +1,4 @@
-package my.toru.jetpacktutorial.viewmodel
+package my.toru.jetpacktutorial.viewmodel.main
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Observer
@@ -10,6 +10,7 @@ import my.toru.jetpacktutorial.model.data.PostData
 import my.toru.jetpacktutorial.model.remote.JetPackNetworkApi
 import my.toru.jetpacktutorial.model.remote.RetrofitCallback
 import my.toru.jetpacktutorial.ui.main.MainAdapter
+import my.toru.jetpacktutorial.viewmodel.common.FragmentProvider
 
 class MainViewModel(private val fragmentProvider: FragmentProvider) : ViewModel() {
     val progressObservable: ObservableField<Boolean> = ObservableField(true)

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="mainViewModel"
-            type="my.toru.jetpacktutorial.viewmodel.MainViewModel"/>
+            type="my.toru.jetpacktutorial.viewmodel.main.MainViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
         android:id="@+id/main"

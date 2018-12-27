@@ -1,4 +1,4 @@
-package my.toru.jetpacktutorial.viewmodel
+package my.toru.jetpacktutorial.viewmodel.main
 
 import android.databinding.BindingAdapter
 import android.support.v7.widget.DividerItemDecoration

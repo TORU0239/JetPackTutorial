@@ -1,4 +1,4 @@
-package my.toru.jetpacktutorial.viewmodel
+package my.toru.jetpacktutorial.viewmodel.common
 
 import android.app.Activity
 import android.content.Context
@@ -8,7 +8,7 @@ import android.widget.Toast
 import my.toru.jetpacktutorial.R
 import my.toru.jetpacktutorial.ui.detail.DetailFragment
 
-class ContextProvider(private val ctx: Context) {
+class ContextProvider(val ctx: Context) {
     fun startActivity(intent: Intent){
         ctx.startActivity(intent)
     }
