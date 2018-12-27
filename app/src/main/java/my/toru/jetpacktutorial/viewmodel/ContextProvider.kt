@@ -28,7 +28,7 @@ class ContextProvider(private val ctx: Context) {
     }
 }
 
-class FragmentProvider(private val fragment:Fragment){
+class FragmentProvider(val fragment:Fragment){
     fun startActivity(intent: Intent){
         fragment.startActivity(intent)
     }

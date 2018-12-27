@@ -1,5 +1,7 @@
 package my.toru.jetpacktutorial.viewmodel
 
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import android.util.Log
@@ -9,25 +11,28 @@ import my.toru.jetpacktutorial.model.remote.JetPackNetworkApi
 import my.toru.jetpacktutorial.model.remote.RetrofitCallback
 import my.toru.jetpacktutorial.ui.main.MainAdapter
 
-class MainViewModel : ViewModel() {
+class MainViewModel(private val fragmentProvider: FragmentProvider) : ViewModel() {
     val progressObservable: ObservableField<Boolean> = ObservableField(true)
     val adapter:MainAdapter = MainAdapter{
         fragmentProvider.showToast("Clicked!!")
         fragmentProvider.moveToDetail()
     }
-    lateinit var fragmentProvider: FragmentProvider
+
+    private val resultTextData:MutableLiveData<String> = MutableLiveData()
 
     init {
         callAPI()
+        resultTextData.observe(fragmentProvider.fragment, Observer<String>{
+            it?.let { str -> fragmentProvider.showToast(str) }
+        })
     }
 
     private fun callAPI(){
         val scb:(ArrayList<PostData>)->Unit = {
             Log.i(TAG, "size:: ${it.size}")
             adapter.list = it
-            adapter.notifyDataSetChanged()
             progressObservable.set(false)
-            fragmentProvider.showToast("Finished!")
+            resultTextData.value = "Finished"
         }
 
         val noDataCb:()->Unit = {

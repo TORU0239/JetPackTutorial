@@ -12,6 +12,10 @@ import my.toru.jetpacktutorial.model.data.PostData
 class MainAdapter(var callback:()->Unit): RecyclerView.Adapter<MainViewHolder>() {
 
     var list:ArrayList<PostData> = ArrayList()
+    set(value){
+        field = value
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(container: ViewGroup, viewType: Int): MainViewHolder
             = MainViewHolder(DataBindingUtil.inflate(LayoutInflater.from(container.context),
