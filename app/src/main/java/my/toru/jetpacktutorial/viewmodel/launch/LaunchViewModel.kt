@@ -3,6 +3,7 @@ package my.toru.jetpacktutorial.viewmodel.launch
 import android.content.Intent
 import android.view.View
 import my.toru.jetpacktutorial.ui.main.MainActivity
+import my.toru.jetpacktutorial.ui.workmanager.WorkManagerActivity
 import my.toru.jetpacktutorial.viewmodel.common.ContextProvider
 
 class LaunchViewModel(private val contextProvider: ContextProvider) {
@@ -21,6 +22,6 @@ class LaunchViewModel(private val contextProvider: ContextProvider) {
     }
 
     fun onGoToWorkManager(v:View){
-        contextProvider.showToast("UNDER IMPLEMENTATION")
+        contextProvider.startActivity(Intent(contextProvider.ctx, WorkManagerActivity::class.java))
     }
 }
