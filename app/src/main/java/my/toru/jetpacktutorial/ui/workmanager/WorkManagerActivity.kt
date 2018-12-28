@@ -1,18 +1,18 @@
 package my.toru.jetpacktutorial.ui.workmanager
 
-import android.support.v7.app.AppCompatActivity
+import android.arch.lifecycle.ViewModelProviders
+import android.databinding.DataBindingUtil
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_work_manager.*
+import android.support.v7.app.AppCompatActivity
 import my.toru.jetpacktutorial.R
+import my.toru.jetpacktutorial.databinding.ActivityWorkManagerBinding
+import my.toru.jetpacktutorial.viewmodel.workmanager.WorkManagerViewModel
 
 class WorkManagerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_work_manager)
-
-        btn_workmanager.setOnClickListener {
-
-        }
+        val databinding:ActivityWorkManagerBinding = DataBindingUtil.setContentView(this@WorkManagerActivity, R.layout.activity_work_manager)
+        databinding.workVM = ViewModelProviders.of(this@WorkManagerActivity).get(WorkManagerViewModel::class.java)
     }
 }
